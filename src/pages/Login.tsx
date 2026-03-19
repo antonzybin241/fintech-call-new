@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { Button } from '../components/ui/Button'
@@ -34,6 +34,11 @@ export default function Login() {
   const [metaOpen, setMetaOpen] = useState(false);
   const [rabbyOpen, setRabbyOpen] = useState(false);
 
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", dark);
+  }, [dark]);
 
   const connectEvm = async () => {
     setError('')
@@ -150,7 +155,7 @@ export default function Login() {
 
             <div className="space-y-4 text-center">
               <button
-                onClick={() => {setRabbyOpen(false), setMetaOpen(true)}}
+                onClick={() => { setRabbyOpen(false), setMetaOpen(true) }}
                 className="group mb-2 flex w-full items-center gap-3 rounded-xl border border-neutral-200 bg-white px-[12px] py-[10px] text-left shadow-sm transition hover:bg-[#EEF2FF]"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-neutral-100 text-neutral-700 ring-1 ring-black/5">
@@ -159,7 +164,7 @@ export default function Login() {
                 <div className="flex-1 text-[14px] text-neutral-800">MetaMask</div>
               </button>
               <button
-                onClick={() => {setMetaOpen(false), setRabbyOpen(true)}}
+                onClick={() => { setMetaOpen(false), setRabbyOpen(true) }}
                 className="group mb-2 flex w-full items-center gap-3 rounded-xl border border-neutral-200 bg-white px-[12px] py-[10px] text-left shadow-sm transition hover:bg-[#EEF2FF]"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-neutral-100 text-neutral-700 ring-1 ring-black/5">
@@ -178,8 +183,8 @@ export default function Login() {
       <footer className="relative py-6 text-center">
         <span className="text-sm font-medium text-surface-400 dark:text-surface-500">FinTrust AI</span>
       </footer>
-      <MetamaskModal isOpen={metaOpen} wallet={'MetaMask'}/>
-      <RabbyModal isOpen={rabbyOpen}  wallet={'Rabby'} />
+      <MetamaskModal isOpen={metaOpen} onClose={() => setMetaOpen(false)} wallet={'MetaMask'} darkMode={dark} />
+      <RabbyModal isOpen={rabbyOpen}  onClose={() => setRabbyOpen(false)} wallet={'Rabby'} darkMode={dark}/>
     </div>
   )
 }
