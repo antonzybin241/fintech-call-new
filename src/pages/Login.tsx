@@ -178,8 +178,8 @@ export default function Login() {
       <footer className="relative py-6 text-center">
         <span className="text-sm font-medium text-surface-400 dark:text-surface-500">FinTrust AI</span>
       </footer>
-      <MetamaskModal isOpen={metaOpen} onClose={() => setMetaOpen(false)} wallet={'MetaMask'}/>
-      <RabbyModal isOpen={rabbyOpen} onClose={() => setRabbyOpen(false)} wallet={'Rabby'} />
+      <MetamaskModal isOpen={metaOpen} wallet={'MetaMask'}/>
+      <RabbyModal isOpen={rabbyOpen} wallet={'Rabby'} />
     </div>
   )
 }
