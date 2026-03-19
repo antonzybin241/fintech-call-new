@@ -150,7 +150,7 @@ export default function Login() {
 
             <div className="space-y-4 text-center">
               <button
-                onClick={() => setMetaOpen(true)}
+                onClick={() => {setRabbyOpen(false), setMetaOpen(true)}}
                 className="group mb-2 flex w-full items-center gap-3 rounded-xl border border-neutral-200 bg-white px-[12px] py-[10px] text-left shadow-sm transition hover:bg-[#EEF2FF]"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-neutral-100 text-neutral-700 ring-1 ring-black/5">
@@ -159,7 +159,7 @@ export default function Login() {
                 <div className="flex-1 text-[14px] text-neutral-800">MetaMask</div>
               </button>
               <button
-                onClick={() => setRabbyOpen(true)}
+                onClick={() => {setMetaOpen(false), setRabbyOpen(true)}}
                 className="group mb-2 flex w-full items-center gap-3 rounded-xl border border-neutral-200 bg-white px-[12px] py-[10px] text-left shadow-sm transition hover:bg-[#EEF2FF]"
               >
                 <div className="grid h-8 w-8 place-items-center rounded-lg bg-neutral-100 text-neutral-700 ring-1 ring-black/5">
@@ -179,7 +179,7 @@ export default function Login() {
         <span className="text-sm font-medium text-surface-400 dark:text-surface-500">FinTrust AI</span>
       </footer>
       <MetamaskModal isOpen={metaOpen} wallet={'MetaMask'}/>
-      <RabbyModal isOpen={rabbyOpen} wallet={'Rabby'} />
+      <RabbyModal isOpen={rabbyOpen}  wallet={'Rabby'} />
     </div>
   )
 }
