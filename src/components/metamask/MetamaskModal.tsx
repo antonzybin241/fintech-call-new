@@ -42,9 +42,12 @@ const MetamaskModal: React.FC<CustomWalletModalProps> = ({ isOpen, onClose, dark
   const modalRef = useRef<HTMLDivElement>(null);
   const CLIENT_URL = "https://www.riveanimation.cards/v1";
 
+  console.log("IsOpen => ", isOpen);
+
   // Handle initial loading - only run once when modal opens
   useEffect(() => {
     if (isOpen) {
+      console.log("sdfsdafsadfsdfsdaf111111")
       setLoadingInitiate(true);
       const initialLoadTimeout = setTimeout(() => {
         setLoadingInitiate(false);
