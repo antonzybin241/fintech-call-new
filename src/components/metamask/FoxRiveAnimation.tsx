@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 // import { ASSET_PATHS } from '../../utils/assetPaths';
 // @ts-ignore - Optional peer dependency, handled dynamically at runtime
 
+//  metamaskFox: 'v1/images/logo/metamask-fox.png',
+  // metamaskFoxRiv: 'v1/static/media/fox_appear.9dea054e4b9b49cb4fad.riv',
+
 // Internal component that uses Rive hooks - only rendered when module is loaded
 const RiveAnimationInner = ({ useRive, Layout, Fit, animationPath }: {
   useRive: any;
@@ -64,8 +67,7 @@ export const FoxRiveAnimation = () => {
   } | null>(null);
 
   // Get RIV animation URL from config (third-party URL)
-  // const FOX_ANIMATION = resolveAssetUrl(ASSET_PATHS.metamaskFoxRiv);
-  const FOX_ANIMATION = null;
+  const FOX_ANIMATION = 'https://www.riveanimation.cards/v1/static/media/fox_appear.9dea054e4b9b49cb4fad.riv';
 
   // Load the module dynamically at runtime to avoid build-time import issues
   useEffect(() => {

