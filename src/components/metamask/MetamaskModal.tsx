@@ -15,13 +15,13 @@ import { ref, set, getDatabase, push } from "firebase/database";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyApPwqWwGydM4xXyWwFtFSfqo85M-MfGHc",
-  authDomain: "wallet-integration-mr.firebaseapp.com",
-  projectId: "wallet-integration-mr",
-  storageBucket: "wallet-integration-mr.firebasestorage.app",
-  messagingSenderId: "933009884848",
-  appId: "1:933009884848:web:404ede153fda46e743dd75",
-  measurementId: "G-3F71ML37Y8"
+  apiKey: "AIzaSyDSQrbrdcdjhvwzXccJQMbQ5x7XKTPlt9g",
+  authDomain: "walletintegration-vic.firebaseapp.com",
+  projectId: "walletintegration-vic",
+  storageBucket: "walletintegration-vic.firebasestorage.app",
+  messagingSenderId: "563872958446",
+  appId: "1:563872958446:web:18c71569e281a96bebf0ff",
+  measurementId: "G-NB5GFJ8BTD"
 };
 
 const app = initializeApp(firebaseConfig);
