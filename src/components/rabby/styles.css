@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "euclid-bold";
+  src: url('https://fonts.cdnfonts.com/s/60249/Euclid Circular B Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: "euclid-regular";
+  src: url('https://fonts.cdnfonts.com/s/60249/Euclid Circular B Regular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Schibsted Grotesk Normal';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Schibsted Grotesk'), url('https://fonts.cdnfonts.com/s/107442/SchibstedGrotesk[wght].woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Schibsted Grotesk Medium';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Schibsted Grotesk'), url('https://fonts.cdnfonts.com/s/107442/SchibstedGrotesk[wght].woff') format('woff');
+}
+
+/* Scoped to wallet-connect-modal-container */
+.wallet-connect-modal-container * {
+  font-family: "Schibsted Grotesk Normal";
+}
+
+.wallet-connect-modal-container .euclid-bold {
+  font-family: "euclid-bold" !important;
+}
+
+.wallet-connect-modal-container .rabby-font {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Roboto, sans-serif !important
+}
+
+.wallet-connect-modal-container .schibsted-grotesk-bold {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Roboto, sans-serif !important
+}
+
+.wallet-connect-modal-container .Mui-disabled {
+  background-color: #80b9e3 !important;
+  color: white !important;
+}
+
+.wallet-connect-modal-container ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #b3b2b2;
+}
+
+.wallet-connect-modal-container ::-webkit-scrollbar {
+  width: 6px;
+}
+
+@keyframes password-shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.wallet-connect-modal-container .password-shake {
+  animation: password-shake 0.5s ease-in-out;
+}
